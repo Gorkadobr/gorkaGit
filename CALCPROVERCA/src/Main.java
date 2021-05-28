@@ -1,5 +1,4 @@
 import java.util.Scanner;
-//Деление не работает...плохая обработка исключений...
 public class Main {
     public static void main(String[] args) {
         System.out.println("Введите арифметическую операцию");
