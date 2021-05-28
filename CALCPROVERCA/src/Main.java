@@ -8,10 +8,11 @@ public class Main {
             String text = sc.nextLine();
             String[] blocks = text.split(" ");
 
-        if (ArabOp.ArabOperation(blocks) > Parse.RomeOrArab(blocks)) {
-            System.out.println(ArabOp.ArabOperation(blocks));
-        } else if (Parse.RomeOrArab(blocks) > ArabOp.ArabOperation(blocks)) {
+        if (ArabOrRome(blocks) == true){
             System.out.println(Oper.Transform(blocks));
+        }
+        else{
+            System.out.println(ArabOp.ArabOperation(blocks));
         }
     }
 
@@ -19,29 +20,24 @@ public class Main {
         boolean flag = false;
         boolean flag1 = false;
         boolean flag2 = false;
-        String[] roman = {"X", "IX", "VIII", "VII", "VI", "V", "IV", "III", "II", "I"};
-
-        for (int i = 0; i < roman.length; i++) {
-            if (blocks[0].equals(roman[i])) {
+            String[] roman = {"X", "IX", "VIII", "VII", "VI", "V", "IV", "III", "II", "I"};
+    for (int i = 0; i < roman.length; i++) {
+        if (blocks[0].equals(roman[i])) {
+            flag1 = true;
+        }
+    }
+            for (int a = 0; a < roman.length; a++) {
+                if (blocks[2].equals(roman[a])) {
+                    flag2 = true;
+                }
+            }
+            if (flag1 == true && flag2 == true){
                 flag = true;
             }
+            else if ((flag1 == false && flag2 == true) || (flag1 == true && flag2 == false)){
+            throw new IllegalArgumentException("Цифры должны быть либо арабские, либо римские.");
         }
-        for (int i = 0; i < roman.length; i++) {
-            if (blocks[2].equals(roman[i])) {
-                flag1 = true;
-            }
-        }
-        if (flag == true && flag1 == false) {
-            throw new IllegalStateException("Оба числа должны быть римскими либо арабскими");
-        }
-        else if (flag == false && flag1 == true) {
-            throw new IllegalStateException("Оба числа должны быть римскими либо арабскими");
-        }
-        else if (flag == true && flag1 == true){
-            flag2 = true;
-        }
-        else flag2 = false;
-        return flag2;
+        return flag;
     }
 
 

@@ -1,7 +1,8 @@
 public class Oper {
-    public static String Transform (String[] blocks){
+    public static String Transform (String[] blocks) {
         String s = "";
-        int num1 = Parse.RomeOrArab(blocks);
+        if (Main.ArabOrRome(blocks) == true) {
+            int num1 = ArabOp.ArabOperation(blocks);
         while (num1 >= 100) {
             s += "C";
             num1 -= 100;
@@ -38,6 +39,7 @@ public class Oper {
             s += "I";
             num1 -= 1;
         }
+    }
         return s;
     }
 }
